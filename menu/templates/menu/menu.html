@@ -1,0 +1,19 @@
+{% load menu_fields %}
+
+
+<a href="{{ menu_item.url }}">{{ menu_item.name }}</a>
+
+{% if menu_item.children %}
+
+<details {% if menu_item.id in opented_menu_items %} open {% endif %}>
+    <summary>
+
+    </summary>
+    {% for child in menu_item.children %}
+    <div class="menu_item" style="margin-bottom: 10px;">
+        {% draw_menu_children child.id %}
+    </div>
+    {% endfor %}
+</details>
+
+{% endif %}
